@@ -17,7 +17,7 @@ class FormEntryFactory extends Factory
      */
     public function definition(): array
     {
-        $project = fake()->catchPhrase();
+        $project = fake()->company().' website';
 
         return [
             'demo' => 'project-kickoff',

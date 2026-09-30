@@ -1,0 +1,11 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "/Users/amitgupta/Library/Application Support/Herd/bin/php85",
+            "args": [
+                "/Users/amitgupta/var/www/html/dev-react/vue/artisan",
+                "boost:mcp"
+            ]
+        }
+    }
+}
