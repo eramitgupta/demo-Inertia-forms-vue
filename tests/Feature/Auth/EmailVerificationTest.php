@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use Illuminate\Auth\Events\Verified;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\URL;
 use Laravel\Fortify\Features;
@@ -24,7 +25,10 @@ test('unverified users are redirected to the email verification prompt', functio
     $response = $this->actingAs($user)->get(route('appearance.edit'));
 
     $response->assertRedirect(route('verification.notice'));
-});
+})->skip(
+    ! is_subclass_of(User::class, MustVerifyEmail::class),
+    'The User model does not implement MustVerifyEmail.',
+);
 
 test('email can be verified', function () {
     $user = User::factory()->unverified()->create();
